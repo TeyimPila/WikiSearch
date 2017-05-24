@@ -24,18 +24,18 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="container container-fluid">
-
-    <h1>WikiSearch</h1>
-    <div class="search-wrapper">
-        <div class="input-holder">
-            <input type="text" class="search-input" placeholder="Enter Search term..."/>
-            <button class="search-icon" onclick="searchToggle(this, event)"><span></span></button>
-        </div>
-        <span class="close" onclick="searchToggle(this, event)"></span>
+<section class="search-area">
+    <div class="container container-fluid" id="search-area">
+            <h1>WikiSearch</h1>
+        <form class="search-form" id="search-form">
+                <input type="text" class="form-control" placeholder="Enter search term..." id="search-box"/>
+                <button type="submit" class="btn btn-primary" id="submit-button"><i class="fa icon-search"></i> </button>
+        </form>
     </div>
-</div>
+</section>
+<section class="results">
 
+</section>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
