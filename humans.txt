@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Pila -- Developer -- https://www.twitter.com/Teyimpila
 
 # THANKS
 
