@@ -25,15 +25,19 @@
 
 <!-- Add your site or application content here -->
 <div class="container container-fluid">
+    <h1 id="title" class="text text-center">WikiSearch</h1>
+    <form onsubmit="submitFn(this, event);">
+        <div class="search-wrapper">
+            <div class="input-holder">
+                <input type="text" class="search-input" placeholder="Type to search" />
+                <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+            </div>
+            <span class="close" onclick="searchToggle(this, event);"></span>
+            <div class="result-container">
 
-    <h1>WikiSearch</h1>
-    <div class="search-wrapper">
-        <div class="input-holder">
-            <input type="text" class="search-input" placeholder="Enter Search term..."/>
-            <button class="search-icon" onclick="searchToggle(this, event)"><span></span></button>
+            </div>
         </div>
-        <span class="close" onclick="searchToggle(this, event)"></span>
-    </div>
+    </form>
 </div>
 
 
