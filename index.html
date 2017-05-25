@@ -29,13 +29,15 @@
     <form onsubmit="submitFn(this, event);">
         <div class="search-wrapper">
             <div class="input-holder">
-                <input type="text" class="search-input" placeholder="Type to search" />
+                <input type="text" class="search-input" placeholder="Type to search" required="" oninvalid="this.setCustomValidity('You seem to be missing something ;)')"/>
                 <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
             </div>
             <span class="close" onclick="searchToggle(this, event);"></span>
+
             <div class="result-container">
 
             </div>
+
         </div>
     </form>
 </div>
