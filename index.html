@@ -24,18 +24,32 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<section class="search-area">
-    <div class="container container-fluid" id="search-area">
+<div class="container container-fluid" id="search-container">
+    <div class="input">
+        <div class="top">
             <h1>WikiSearch</h1>
-        <form class="search-form" id="search-form">
-                <input type="text" class="form-control" placeholder="Enter search term..." id="search-box"/>
-                <button type="submit" class="btn btn-primary" id="submit-button"><i class="fa icon-search"></i> </button>
-        </form>
+            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><h3>I am Feeling Lucky</h3></a>
+        </div>
+        <div class="bottom">
+            <form onsubmit="submitFn(this, event);">
+                <div class="search-wrapper">
+                    <div class="input-holder">
+                        <input type="text" class="search-input" placeholder="Type to search" id="search-field"
+                               required/>
+                        <button class="search-icon" onclick="searchToggle(this, event);" id="search-button">
+                            <span></span>
+                        </button>
+                    </div>
+                    <span class="close" onclick="searchToggle(this, event);" id="close"></span>
+                </div>
+            </form>
+        </div>
     </div>
-</section>
-<section class="results">
+    <div class="result-container" id="search-results">
 
-</section>
+    </div>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

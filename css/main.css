@@ -14,7 +14,11 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
-    background-color: #cccccc;
+    background: transparent url(../img/image.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /*
@@ -95,30 +99,127 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.search-area{
-    background-color: #cccccc;
+html, body {
+    height: 100%;
 }
 
-#search-area {
-    text-align: center;
+.container #title {
+    margin-top: 200px;
+    color: #ffffff;
 }
 
-form{
-    border: solid black 2px;
-    display: block;
-    margin-top: 50px;
-    padding: 0px;
-    align-items:center;
+body {
+    background-color: transparent !important;
 }
 
-#search-box{
-    margin-right: 0px;
+.search-wrapper {
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 
-#submit-button{
-    margin-left: 0px;
+.search-wrapper.active {
 }
 
+.search-wrapper .input-holder {
+    overflow: hidden;
+    height: 70px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    position: relative;
+    width: 70px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-wrapper.active .input-holder {
+    border-radius: 50px;
+    width: 450px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    -moz-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+}
+
+.search-wrapper .input-holder .search-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 70px 0 20px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Open Sans", Arial, Verdana, serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #FFF;
+    -webkit-transform: translate(0, 60px);
+    -moz-transform: translate(0, 60px);
+    transform: translate(0, 60px);
+    -webkit-transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    -moz-transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+}
+
+.search-wrapper.active .input-holder .search-input {
+    opacity: 1;
+    -webkit-transform: translate(0, 10px);
+    -moz-transform: translate(0, 10px);
+    transform: translate(0, 10px);
+}
+
+.search-wrapper .input-holder .search-icon {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 6px;
+    background: #FFF;
+    padding: 0;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    float: right;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-wrapper.active .input-holder .search-icon {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 30px;
+}
+
+.search-wrapper .input-holder .search-icon span {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+    -moz-transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+    transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+}
 
 .result-container {
     position: relative;
@@ -132,6 +233,11 @@ form{
     width: 100%;
 }
 
+.search-wrapper.active .input-holder .search-icon span {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
 
 .page-item {
     position: relative;
@@ -146,11 +252,170 @@ form{
 @include transition-timing-function(cubic-bezier(0.6, 0, 0.4, 1.0));
 }
 
+.search-wrapper .input-holder .search-icon span::before, .search-wrapper .input-holder .search-icon span::after {
+    position: absolute;
+    content: '';
+}
 
+.search-wrapper .input-holder .search-icon span::before {
+    width: 4px;
+    height: 11px;
+    left: 9px;
+    top: 18px;
+    border-radius: 2px;
+    background: #974BE0;
+}
 
+.search-wrapper .input-holder .search-icon span::after {
+    width: 14px;
+    height: 14px;
+    left: 0;
+    top: 0;
+    border-radius: 16px;
+    border: 4px solid #974BE0;
+}
 
+.search-wrapper .close {
+    position: absolute;
+    z-index: 1;
+    top: 24px;
+    right: 20px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -webkit-transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    -moz-transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
 
+.search-wrapper.active .close {
+    right: -50px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    -moz-transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay: 0.5s;
+    transition-delay: 0.5s;
+}
 
+.search-wrapper .close::before, .search-wrapper .close::after {
+    position: absolute;
+    content: '';
+    background: #ff0000;
+    border-radius: 2px;
+}
+
+.search-wrapper .close::before {
+    width: 5px;
+    height: 25px;
+    left: 10px;
+    top: 0;
+}
+
+.search-wrapper .close::after {
+    width: 25px;
+    height: 5px;
+    left: 0;
+    top: 10px;
+}
+
+@media screen and (max-width: 560px) {
+    .search-wrapper.active .input-holder {
+        width: 200px;
+    }
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
+}
+
+ul a {
+    text-decoration: none !important;
+    color: black;
+}
+
+a h1 {
+    font-size: 18px;
+}
+
+a p {
+    font-size: 14px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.input {
+    position: relative;
+    text-align: center;
+    margin-top: 50px;
+    border: solid 20px transparent;
+    width: 100%;
+}
+
+.result-container {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 40px;
+    border: solid 20px transparent;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-item {
+    position: relative;
+    margin: 10px;
+    display: inline-table;
+    padding: 10px;
+    background-color: #E7E7E8;
+    height: 250px;
+    width: 25%;
+    border: 2px solid #45395d;
+@include animation(new-item 1 s ease-in-out forwards);
+@include transition-timing-function(cubic-bezier(0.6, 0, 0.4, 1.0));
+}
+
+.page-item:hover {
+    border-left: 5px solid orange;
+}
+
+.page-item h1:hover {
+    text-decoration: underline;
+    color: #ff69b4;
+}
+
+.container, .container-fluid {
+    width: 90% !important;
+    padding: 20px;
+}
+
+.top {
+    color: #000000 !important;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.bottom {
+    position: relative;
+}
+
+.top h1 {
+    color: #734aff !important;
+}
 
 /* ==========================================================================
    Helper classes
@@ -237,9 +502,9 @@ form{
 }
 
 @media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -256,8 +521,9 @@ form{
     *:first-letter,
     *:first-line {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
+        color: #000 !important;
+        /* Black prints faster:
+                                          http://www.sanbeiji.com/archives/953 */
         box-shadow: none !important;
         text-shadow: none !important;
     }
@@ -279,7 +545,6 @@ form{
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
@@ -295,7 +560,6 @@ form{
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
-
     thead {
         display: table-header-group;
     }
