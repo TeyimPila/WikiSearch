@@ -23,11 +23,44 @@ function submitFn(obj, evt) {
     if (!value.length) {
         _html = "Please type in some text to search";
     } else {
-        _html = _html.replace(/{value}/g, value);
+        retrieve(value);
     }
 
-    $(obj).find('.result-container').html('<span>' + _html + '</span>');
-    $(obj).find('.result-container').fadeIn(100);
+    // $(obj).find('.result-container').html('<span>' + _html + '</span>');
+    // $(obj).find('.result-container').fadeIn(100);
 
     evt.preventDefault();
+}
+
+function retrieve(query) {
+    var JSONSite = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+    JSONSite += query;
+    JSONSite += '&callback=?';
+
+    $.getJSON(JSONSite, function (data) {
+        populatePage(data);
+    });
+}
+
+function populatePage(respose) {
+
+    var page = 'https://en.wikipedia.org/?curid=';
+    var data_for_page = '<ul>';
+    var results = respose.query.pages;
+
+    for (var key in results){
+        if(results.hasOwnProperty(key)){
+            data_for_page+= '<div class="page-item"><a href='+page + results[key].pageid+'>' +'<li>'+ '<h1>'+results[key].title+'</h1>' + '<p>'+results[key].extract+'</p></li></a></div>';
+        }
+    }
+
+    document.getElementById('search-results').innerHTML = data_for_page+='</ul>';
+
+    // var ul = '<ul>';
+    // results.forEach(function (object){
+    //     ul+='<h1>object.</h1><p></p>'
+    // } );
+
+    // console.log(data_for_page);
+
 }
