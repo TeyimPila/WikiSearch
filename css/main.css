@@ -120,10 +120,31 @@ form{
 }
 
 
+.result-container {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    padding-top: 40px;
+    border: solid 20px transparent;
+    margin: 0 auto;
+    width: 100%;
+}
 
 
-
-
+.page-item {
+    position: relative;
+    margin: 10px;
+    display: inline-flex;
+    padding: 10px;
+    background-color: #E7E7E8;
+    height: 250px;
+    width: 25%;
+    border: 2px solid #45395d;
+@include animation(new-item 1 s ease-in-out forwards);
+@include transition-timing-function(cubic-bezier(0.6, 0, 0.4, 1.0));
+}
 
 
 
