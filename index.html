@@ -24,22 +24,30 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="container container-fluid">
-    <h1 id="title" class="text text-center">WikiSearch</h1>
-    <form onsubmit="submitFn(this, event);">
-        <div class="search-wrapper">
-            <div class="input-holder">
-                <input type="text" class="search-input" placeholder="Type to search" required/>
-                <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
-            </div>
-            <span class="close" onclick="searchToggle(this, event);"></span>
-
-            <div class="result-container">
-
-            </div>
-
+<div class="container container-fluid" id="search-container">
+    <div class="input">
+        <div class="top">
+            <h1>WikiSearch</h1>
+            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><h3>I am Feeling Lucky</h3></a>
         </div>
-    </form>
+        <div class="bottom">
+            <form onsubmit="submitFn(this, event);">
+                <div class="search-wrapper">
+                    <div class="input-holder">
+                        <input type="text" class="search-input" placeholder="Type to search" id="search-field"
+                               required/>
+                        <button class="search-icon" onclick="searchToggle(this, event);" id="search-button">
+                            <span></span>
+                        </button>
+                    </div>
+                    <span class="close" onclick="searchToggle(this, event);" id="close"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="result-container" id="search-results">
+
+    </div>
 </div>
 
 
