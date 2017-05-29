@@ -25,10 +25,6 @@ function submitFn(obj, evt) {
     } else {
         retrieve(value);
     }
-
-    // $(obj).find('.result-container').html('<span>' + _html + '</span>');
-    // $(obj).find('.result-container').fadeIn(100);
-
     evt.preventDefault();
 }
 
@@ -48,19 +44,11 @@ function populatePage(respose) {
     var data_for_page = '<ul>';
     var results = respose.query.pages;
 
-    for (var key in results){
-        if(results.hasOwnProperty(key)){
-            data_for_page+= '<div class="page-item"><a href='+page + results[key].pageid+'>' +'<li>'+ '<h1>'+results[key].title+'</h1>' + '<p>'+results[key].extract+'</p></li></a></div>';
+    for (var key in results) {
+        if (results.hasOwnProperty(key)) {
+            data_for_page += '<div class="page-item"><a href=' + page + results[key].pageid + ' target = "_blank">' + '<li>' + '<h1>' + results[key].title + '</h1>' + '<p>' + results[key].extract + '</p></li></a></div>';
         }
     }
 
-    document.getElementById('search-results').innerHTML = data_for_page+='</ul>';
-
-    // var ul = '<ul>';
-    // results.forEach(function (object){
-    //     ul+='<h1>object.</h1><p></p>'
-    // } );
-
-    // console.log(data_for_page);
-
+    document.getElementById('search-results').innerHTML = data_for_page += '</ul>';
 }
